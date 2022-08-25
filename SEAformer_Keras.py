@@ -172,9 +172,12 @@ def SEAFormer(pretrained_weights=None, input_shape=(224, 224, 3), use_focus = Tr
     up9 = UpBlock(up8, skip1, 64, cnnup_block[3], grown_rate)  # 224,64
     out = head(up9)
 
+    '''
+    # If using a multi-level optimization strategy
     final_out = MLO([out1, out2, out3, out4, out])
+    '''
 
-    model = Model(inputs, final_out, name='SEAFormer')
+    model = Model(inputs, out, name='SEAFormer')
     model.summary()
 
     print('SEAFormer is loading..........\n'*3)
@@ -189,4 +192,4 @@ def SEAFormer(pretrained_weights=None, input_shape=(224, 224, 3), use_focus = Tr
     return model
 
 
-SEAFormer(pretrained_weights=None, input_shape=(224, 224, 3), use_focus = True, grown_rate = 16)
+# SEAFormer(pretrained_weights=None, input_shape=(224, 224, 3), use_focus = True, grown_rate = 16)
