@@ -114,7 +114,7 @@ def SEA_block(inputs):  # vit cnn
     y_threshold = tf.squeeze(y_threshold, axis=-1)
 
     ym = y * m
-    
+
     threshold_list = []
     for i in range(y.shape[-1]):
         y_slice = ym[..., i]
