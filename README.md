@@ -11,4 +11,6 @@
 - CUDA/CUDNN
 - TensorFlow-GPU and Keras > 2.7.0
 
+## SEAformer overview
 ![Image text](https://github.com/Cjl-MedSeg/SEAformer/blob/SEAformer/Image/SEAformer_overview.jpg)
+![Image text](https://github.com/Cjl-MedSeg/SEAformer/blob/SEAformer/Image/SEAformer_module.jpg)
