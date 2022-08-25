@@ -5,7 +5,7 @@ from tensorflow.keras.applications import densenet
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import binary_crossentropy
 from tensorflow.keras.metrics import binary_accuracy
-from SEAformer.utils import PatchEmbed, dense_mlpblock, SEA_block, dense_convblock, transition_block
+from utils import PatchEmbed, dense_mlpblock, SEA_block, dense_convblock, transition_block
 
 def stage(vit, cnn, pre_train, cnndown_blocks, vitdown_blocks, use_focus, grown_rate, embed_dim = None, sea = True, name='stage1'):  # 112,64   # 112,32
 
@@ -103,7 +103,7 @@ def head(x):
     return x
 
 
-def Multi_level_supervised_learning(out_list):
+def MLO(out_list):
 
     out1 = UpSampling2D(size=(2,2))(Conv2D(1, 1, name='out1')(out_list[0]))
     out2 = UpSampling2D(size=(4,4))(Conv2D(1, 1, name='out2')(out_list[1]))
@@ -171,7 +171,8 @@ def SEAFormer(pretrained_weights=None, input_shape=(224, 224, 3), use_focus = Tr
     up8 = UpBlock(up7, skip2, 128, cnnup_block[2], grown_rate)  # 112,128
     up9 = UpBlock(up8, skip1, 64, cnnup_block[3], grown_rate)  # 224,64
     out = head(up9)
-    final_out = Multi_level_supervised_learning([out1, out2, out3, out4, out])
+
+    final_out = MLO([out1, out2, out3, out4, out])
 
     model = Model(inputs, final_out, name='SEAFormer')
     model.summary()
