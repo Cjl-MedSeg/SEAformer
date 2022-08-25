@@ -3,7 +3,6 @@ from tensorflow.keras import backend as K
 import tensorflow as tf
 from tensorflow.keras import backend
 
-
 def group_conv(x, filters, kernel, stride, groups):
     channel_axis = 1 if K.image_data_format() == 'channels_first' else -1
     in_channels = K.int_shape(x)[channel_axis]
@@ -115,6 +114,7 @@ def SEA_block(inputs):  # vit cnn
     y_threshold = tf.squeeze(y_threshold, axis=-1)
 
     ym = y * m
+    
     threshold_list = []
     for i in range(y.shape[-1]):
         y_slice = ym[..., i]
