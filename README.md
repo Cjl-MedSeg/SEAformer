@@ -10,3 +10,5 @@
 ## Requirements
 - CUDA/CUDNN
 - TensorFlow-GPU and Keras > 2.7.0
+
+![Image text](https://github.com/Cjl-MedSeg/SEAformer/blob/SEAformer/Image/SEAformer_overview.jpg)
