@@ -13,4 +13,4 @@
 
 ## SEAformer overview
 ![Image text](https://github.com/Cjl-MedSeg/SEAformer/blob/SEAformer/Image/SEAformer_overview.jpg)
-![Image text](https://github.com/Cjl-MedSeg/SEAformer/blob/SEAformer/Image/SEAformer_module.jpg)
+![Image text](https://github.com/Cjl-MedSeg/SEAformer/blob/SEAformer/Image/SEA_module.jpg)
