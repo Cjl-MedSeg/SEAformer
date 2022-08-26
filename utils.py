@@ -97,12 +97,14 @@ def select_aggregate(feat_map):
 def SEA_block(inputs):  # vit cnn
 
     x, x1, SEA = inputs[0], inputs[1], inputs[2]
-
     _, _, _, C = x.shape
+    
+    y_sig = Activation('sigmoid')(x1)
+   
     x = AveragePooling2D(pool_size=3, strides=1, padding='same')(x) - x
     y_sig1 = Activation('sigmoid')(x)
 
-    y_sig = Activation('sigmoid')(x1)
+    
     y = MaxPooling2D(pool_size=3, strides=1, padding='same', data_format='channels_last')(1 - y_sig)
     y = y - (1 - y_sig)
     m = select_aggregate(y_sig)
